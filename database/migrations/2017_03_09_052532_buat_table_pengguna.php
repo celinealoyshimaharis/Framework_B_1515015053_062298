@@ -29,5 +29,6 @@ class BuatTablePengguna extends Migration
     public function down()
     {
         Schema::drop('pengguna');
+       
     }
 }
