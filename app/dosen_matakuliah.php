@@ -11,15 +11,15 @@ class dosen_matakuliah extends Model
 
     public function jadwal_matakuliah()
     {
-    	return $this->hasMany('App/jadwal_matakuliah');
+    	return $this->hasMany(jadwal_matakuliah::class);
     }
     public function matakuliah()
     {
-    	return $this->belongsTo('App/matakuliah');
+    	return $this->belongsTo(matakuliah::class);
     }
     public function dosen()
     {
-    	return $this->belongsTo('App/dosen');
+    	return $this->belongsTo(dosen::class);
     }
 }
 

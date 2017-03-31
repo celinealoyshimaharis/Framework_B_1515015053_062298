@@ -11,6 +11,9 @@
 |
 */
 
+Route::get('mahasiswa_pengguna','mahasiswacontroller@mahasiswa');
+
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -35,8 +38,15 @@ Route::post('pengguna/edit/{pengguna}','PenggunaController@update');
 Route::get('pengguna/hapus/{pengguna}','PenggunaController@hapus');
 
 
-Route::get('mahasiswa','mahasiswaController@awal');
+Route::get('mahasiswa','mahasiswacontroller@awal');
 Route::get('mahasiswa/tambah','mahasiswacontroller@tambah');
+Route::get('mahasiswa/hapus','Mahasiswacontroller@hapus');
+Route::get('mahasiswa/{mahasiswa}','mahasiswacontroller@lihat');
+Route::post('mahasiswa/simpan','mahasiswaController@simpan');
+Route::get('mahasiswa/edit/{mahasiswa}','mahasiswaController@edit');
+Route::post('mahasiswa/edit/{mahasiswa}','mahasiswacontroller@update');
+Route::get('mahasiswa/hapus/{mahasiswa}','mahasiswacontroller@hapus');
+
 
 Route::get('dosen','dosencontroller@awal');
 Route::get('dosen/tambah','dosencontroller@tambah');
@@ -61,3 +71,9 @@ Route::get('dosen_matakuliah/tambah','dosen_matakuliahcontroller@tambah');
 
 Route::get('jadwal_matakuliah','jadwal_matakuliahcontroller@awal');
 Route::get('jadwal_matakuliah/tambah','jadwal_matakuliahcontroller@tambah');
+Route::get('jadwal_matakuliah/hapus','jadwal_matakuliahcontroller@hapus');
+Route::get('jadwal_matakuliah/{jadwal_matakuliah}','jadwal_matakuliahcontroller@lihat');
+Route::post('jadwal_matakuliah/simpan','jadwal_matakuliahcontroller@simpan');
+Route::get('jadwal_matakuliah/edit/{jadwal_matakuliah}','jadwal_matakuliahcontroller@edit');
+Route::post('jadwal_matakuliah/edit/{jadwal_matakuliah}','jadwal_matakuliahcontroller@update');
+Route::get('jadwal_matakuliah/hapus/{jadwal_matakuliah}','jadwal_matakuliahcontroller@hapus');
