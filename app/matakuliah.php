@@ -11,5 +11,7 @@ class matakuliah extends Model
 
 	public function dosen_matakuliah(){
 		return $this->hasMany(dosen_matakuliah::class);
+		//Relasi hasMany menunjukkan adnaya relasi one to many 
+    	//dimana nilai dalam tabel matakuliah diambil untuk direlasikan dengan tabel dosen_matakuliah yaitu id_matakuliah
 	}
 }
