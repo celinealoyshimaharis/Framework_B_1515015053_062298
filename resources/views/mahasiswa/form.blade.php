@@ -17,7 +17,7 @@
 <div class="form-group">
 	<label class="col-sm-2 control-label" id="alamat">Alamat</label>
 	<div class="col-sm-10">
-		{!! Form::textarea('Aaamat',null,['class'=>'form-control', 'id'=>'alamat', 'placeholder'=>"Alamat"]) !!}
+		{!! Form::textarea('alamat',null,['class'=>'form-control', 'id'=>'alamat', 'placeholder'=>"Alamat"]) !!}
 	</div>	
 </div>
 
@@ -33,7 +33,7 @@
 <div class="form-group">
 	<label class="col-sm-2 control-label" >Password</label>
 	<div class="col-sm-10">
-		{!! Form::password('password',null,['class'=>'form-control','placeholder'=>"Password"]) !!}
+		{!! Form::password('password',['class'=>'form-control','placeholder'=>"Password"]) !!}
 	</div>	
 </div>
 

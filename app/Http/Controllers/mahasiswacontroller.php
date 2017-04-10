@@ -33,8 +33,9 @@ class mahasiswacontroller extends Controller
 
     public function awal()
     {
+    	
     	$semuaMahasiswa=mahasiswa::all();
-    	return view('mahasiswa.awal', compact($semuaMahasiswa));
+	return view('mahasiswa.awal', compact('semuaMahasiswa'));
     }
 public function tambah()
 {

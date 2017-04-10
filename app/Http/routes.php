@@ -42,14 +42,21 @@ Route::get('mahasiswa','mahasiswacontroller@awal');
 Route::get('mahasiswa/tambah','mahasiswacontroller@tambah');
 Route::get('mahasiswa/hapus','Mahasiswacontroller@hapus');
 Route::get('mahasiswa/{mahasiswa}','mahasiswacontroller@lihat');
-Route::post('mahasiswa/simpan','mahasiswaController@simpan');
-Route::get('mahasiswa/edit/{mahasiswa}','mahasiswaController@edit');
+Route::post('mahasiswa/simpan','mahasiswacontroller@simpan');
+Route::get('mahasiswa/edit/{mahasiswa}','mahasiswacontroller@edit');
 Route::post('mahasiswa/edit/{mahasiswa}','mahasiswacontroller@update');
 Route::get('mahasiswa/hapus/{mahasiswa}','mahasiswacontroller@hapus');
 
 
 Route::get('dosen','dosencontroller@awal');
 Route::get('dosen/tambah','dosencontroller@tambah');
+Route::get('dosen/hapus','dosencontroller@hapus');
+Route::get('dosen/{dosen}','dosencontroller@lihat');
+Route::post('dosen/simpan','dosencontroller@simpan');
+Route::get('dosen/edit/{dosen}','dosencontroller@edit');
+Route::post('dosen/edit/{dosen}','dosencontroller@update');
+Route::get('dosen/hapus/{dosen}','dosencontroller@hapus');
+
 
 Route::get('ruangan','ruangancontroller@awal');
 Route::get('ruangan/tambah','ruangancontroller@tambah');
@@ -68,6 +75,12 @@ Route::get('matakuliah/hapus/{matakuliah}','MatakuliahController@hapus');
 
 Route::get('dosen_matakuliah','dosen_matakuliahcontroller@awal');
 Route::get('dosen_matakuliah/tambah','dosen_matakuliahcontroller@tambah');
+Route::get('dosen_matakuliah/hapus','dosen_matakuliahcontroller@hapus');
+Route::get('dosen_matakuliah/{dosen_matakuliah}','dosen_matakuliahcontroller@lihat');
+Route::post('dosen_matakuliah/simpan','dosen_matakuliahcontroller@simpan');
+Route::get('dosen_matakuliah/edit/{dosen_matakuliah}','dosen_matakuliahcontroller@edit');
+Route::post('dosen_matakuliah/edit/{dosen_matakuliah}','dosen_Matakuliahcontroller@update');
+Route::get('dosen_matakuliah/hapus/{dosen_matakuliah}','dosen_matakuliahcontroller@hapus');
 
 Route::get('jadwal_matakuliah','jadwal_matakuliahcontroller@awal');
 Route::get('jadwal_matakuliah/tambah','jadwal_matakuliahcontroller@tambah');

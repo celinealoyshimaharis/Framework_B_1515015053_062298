@@ -1,31 +1,67 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
 use App\dosen;
-
+use App\Pengguna;
 class dosencontroller extends Controller
 {
-    public function awal()
-    {
-    	return "Hello dari dosencontroller";
-    }
-     
-public function tambah()
-{
-	return $this->simpan();
-}
-public function simpan()
-{
-	$dosen= new dosen();
-	$dosen->nama='Egy Alatas';
-	$dosen->nip='1412131516';
-	$dosen->alamat='jalan gelatik 2';
-	$dosen->pengguna_id=2;
-	$dosen->save();
-	return "data dengan nama {$dosen->nama} telah disimpan";
+	protected $informasi = 'Gagal Melakukan Aksi';
+	
+	public function awal() {
+		$semuaDosen = dosen::all();
+		return view('dosen.awal',compact('semuaDosen'));
+	}
+	
+	public function tambah() {
+		return view('dosen.tambah');
+	}
+	public function simpan(Request $input) {
+		$pengguna = new Pengguna($input->only('username','password'));
+		if ($pengguna->save()) {
+			$dosen = new dosen;
+			$dosen->nama = $input->nama;
+			$dosen->nip = $input->nip;
+			$dosen->alamat = $input->alamat;
+			if ($pengguna->dosen()->save($dosen)) 
+				$this->informasi = 'Berhasil Simpan Data';
+
+		}	
+		return redirect('dosen')->with(['informasi' => $this->informasi]);
+	}
+	public function edit($id)
+	{
+		$dosen = dosen::find($id);
+		return view('dosen.edit')->with(array('dosen'=>$dosen));
+	}
+	public function lihat($id)
+	{
+		$dosen = dosen::find($id);
+		return view('dosen.lihat')->with(array('dosen'=>$dosen));
+	}
+	public function update($id, Request $input)
+	{
+		$dosen = dosen::find($id);
+		$dosen->nama = $input->nama;
+		$dosen->nip  = $input->nip;
+		$dosen->alamat  = $input->alamat;
+		$dosen->save();
+		if(!is_null($input->username)){
+			$pengguna = $dosen->pengguna->fill($input->only('username'));	
+		if(!empty($input->password)) $pengguna->password = $input->password;
+		if($pengguna->save()) $this->informasi = 'Berhasil Simpan Data';
+		}else{
+			$this->informasi = 'Berhasil simpan data';
+		}
+		return redirect('dosen')->with(['informasi' => $this->informasi]);
+	}
+	public function hapus($id)
+	{
+		$dosen = dosen::find($id);
+		if($dosen->pengguna()->delete()){
+			if($dosen->delete()) $this->informasi = 'Berhasil Update Data';
+		}
+		return redirect('dosen')->with(['informasi'=> $this->informasi]);
+
 }
 }
