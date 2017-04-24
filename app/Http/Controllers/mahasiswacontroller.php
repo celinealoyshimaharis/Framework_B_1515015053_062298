@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+
+use App\Http\Requests\mahasiswarequest;
+
 use App\mahasiswa;
 use App\Pengguna;
 
@@ -35,13 +38,14 @@ class mahasiswacontroller extends Controller
     {
     	
     	$semuaMahasiswa=mahasiswa::all();
+    	// $semuaMahasiswa=mahasiswa::paginate(2);
 	return view('mahasiswa.awal', compact('semuaMahasiswa'));
     }
 public function tambah()
 {
 	return view('mahasiswa.tambah');
 }
-public function simpan(Request $input)
+public function simpan(mahasiswarequest $input)
 {
 	$pengguna = new Pengguna($input->only('username','password'));
 	if ($pengguna->save()) {
@@ -65,7 +69,7 @@ public function edit($id)
 		$mahasiswa = mahasiswa::find($id);
 		return view('mahasiswa.lihat')->with(array('mahasiswa'=>$mahasiswa));
 	}
-	public function update($id, Request $input)
+	public function update($id, mahasiswarequest $input)
 	{
 		$mahasiswa = mahasiswa::find($id);
 		$mahasiswa->nama = $input->nama;

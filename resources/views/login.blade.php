@@ -35,47 +35,10 @@
                 </button>
                 <a href="{{url('/')}}" class ="navbar-brand">Laravel-5</a>
             </div>
-            <div id="navbar" class="collapse navbar-collapse">
-                <ul class="nav navbar-nav">
-                    <li class="dropdown active">
-                        <a href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Mahasiswa <span class="caret"></span></a>
-                        <ul class="dropdown-menu" aria-labelledby="dLabel">
-                            <li><a href="{{url('mahasiswa')}}">Data Mahasiswa</a></li>
-                            <li class="divider"></li>
-                            <li><a href="{{url('jadwal_matakuliah')}}">Jadwal Mahasiswa</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown active">
-                        <a href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Dosen <span class="caret"></span></a>
-                        <ul class="dropdown-menu" aria-labelledby="dLabel">
-                            <li><a href="{{url('dosen')}}">Data Dosen</a></li>
-                            <li class="divider"></li>
-                            <li><a href="{{url('dosen_matakuliah')}}">Jadwal Dosen Mengajar</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown active">
-                        <a href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pengaturan <span class="caret"></span></a>
-                        <ul class="dropdown-menu" aria-labelledby="dLabel">
-                            <li><a href="{{url('pengguna')}}">Pengguna</a></li>
-                            <li class="divider"></li>
-                            <li><a href="{{url('ruangan')}}">Ruangan</a></li>
-                            <li><a href="{{url('matakuliah')}}">Matakuliah</a></li>
-                        </ul>
-                    </li>
-					<li><a href="{{url('logout')}}">Logout
-					</li>
-                </ul>
-            </div><!--/.nav-collapse -->
         </div>
     </nav>
     <div class="clearfix"></div>
-    <div class="container">
-        @if (Session::has('informasi'))
-        <div class="alert alert-info">
-            <strong>Informasi :</strong>
-            {{Session::get('informasi')}}
-        </div>
-        @endif
+    <div class="col-md-4 col-md-offset-4">
 		@if (count($errors)>0)
         <div class="alert alert-danger">
             <ul>
@@ -85,7 +48,29 @@
 			</ul>
         </div>
         @endif
-        @yield('container')
+        <div class="panel panel-default">
+			<div class="panel-heading">
+				<strong>Masuk Aplikasi</strong>
+			</div>
+			{!! Form::open(['url'=>'login','class'=>'form-horizontal']) !!}
+			<div class="form-group">
+				<label class="col-sm-4 control-label">Username</label>
+				<div class="col-sm-8">
+					{!! Form::text('username',null,['class'=>'form-control','placeholder'=>"Username"]) !!}
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-4 control-label">Password</label>
+				<div class="col-sm-8">
+					{!! Form::password('password',['class'=>'form-control','placeholder'=>"Password"]) !!}
+				</div>
+			</div>
+			<div style="width: 100%;text-align: right;">
+				<button class="btn btn-primary"><i class="fa fa-lock"></i>Masuk</button>
+				<button type="reset" class="btn btn-danger"><i class="fa fa-undo"></i>Ulangi</button>
+			</div>
+			{!! Form::close() !!}
+		</div>
     </div>
     <nav class="navbar navbar-default navbar-fixed-bottom">
         <footer class="container">
